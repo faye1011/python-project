@@ -1,0 +1,66 @@
+import csv
+import pandas as pd
+#def read_data():
+  #  data = []
+
+   # with open('sales.csv', 'r') as sales_csv:
+    #    spreadsheet = csv.DictReader(sales_csv)
+    #    for row in spreadsheet:
+     #       data.append(row)
+
+   # return data
+
+#def run():
+    #data = read_data()
+
+   # sales = []
+   # for row in data:
+     #   sale = int(row['total sales'])
+    ##    sales.append(sale)
+
+   # total = sum(sales)
+   # print('Total sales: {}'.format(total))
+
+#run()
+
+#Most popular product = highest total no. sold out of the three
+
+# reading both files with panda
+df = pd.read_csv(r'/Users/faye/PycharmProjects/project/sales.csv')
+df2 = pd.read_csv(r'/Users/faye/PycharmProjects/project/sales_1.csv')
+
+#total sales
+def total():
+    sum = df['total sales'].sum()
+    print('total sales: {}'.format(sum))
+
+total()
+
+cleanser_total = []
+cleanser_sales = df['sales cleanser'].sum()
+cleanser_total.append(cleanser_sales)
+#print(cleanser_total)
+
+
+exfoliator_total = []
+exfoliator_sales = df['sales exfoliator'].sum()
+exfoliator_total.append(exfoliator_sales)
+#print(exfoliator_total)
+
+moisturiser_total= []
+moisturiser_sales=df['sales moisturiser'].sum()
+moisturiser_total.append(moisturiser_sales)
+#print(moisturiser_total)
+
+def popular_product():
+    if moisturiser_total > exfoliator_sales and cleanser_sales:
+        print('moisturiser is our best seller!')
+
+    elif exfoliator_total > cleanser_sales and moisturiser_sales:
+        print('Exfoliator is our best seller!')
+
+    else:
+        print("cleanser is our best seller!")
+
+popular_product()
+
